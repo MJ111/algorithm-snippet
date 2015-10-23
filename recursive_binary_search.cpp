@@ -7,20 +7,20 @@
 
 using namespace std;
 
-int binary_search(int A[], int key, int iBegin, int iEnd) {
-	if (iEnd - iBegin < 2) {
+int binary_search(int A[], int key, int imin, int imax) {
+	if (imax < imin) {
 		return -1;
 	}
 
-	int iMiddle = iBegin + (iEnd - iBegin) / 2;
-	if (A[iMiddle] > key) {
-		binary_search(A, key, iBegin, iMiddle-1);
+	int imid = imin + (imax - imin) / 2;
+	if (A[imid] > key) {
+		binary_search(A, key, imin, imid-1);
 	}
-	else if (A[iMiddle] < key) {
-		binary_search(A, key, iMiddle+1, iEnd);
+	else if (A[imid] < key) {
+		binary_search(A, key, imid+1, imax);
 	}
 	else {
-		return iMiddle;
+		return imid;
 	}
 }
 
