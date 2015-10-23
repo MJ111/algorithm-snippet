@@ -11,22 +11,31 @@ int partition(int A[], int lo, int hi);
 void quicksort(int A[], int lo, int hi) {
 	if (lo < hi) {
 		int p = partition(A, lo, hi);
-		quicksort(A, lo, p - 1);
+		quicksort(A, lo, p);
 		quicksort(A, p + 1, hi);
 	}
 }
 
 int partition(int A[], int lo, int hi) {
-	int pivot = A[hi];
-	int i = lo;
-	for (int j = lo; j < hi; j++) {
-		if (A[j] <= pivot) {
-			swap(A[i], A[j]);
+	int pivot = A[lo];
+	int i = lo - 1;
+	int j = hi + 1;
+
+	while (true) {
+		do {
+			j = j - 1;
+		} while (A[j] > pivot);
+
+		do {
 			i = i + 1;
+		} while (A[i] < pivot);
+
+		if (i < j) {
+			swap(A[i], A[j]);
+		} else {
+			return j;
 		}
 	}
-	swap(A[i], A[hi]);
-	return i;
 }
 
 int main() {
