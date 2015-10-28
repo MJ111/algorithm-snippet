@@ -6,11 +6,11 @@ int n, board[100][100];
 int cache[100][100];
 int jump2(int y, int x) {
 	
-	// ±âÀú »ç·Ê Ã³¸®
+	// ê¸°ì € ì‚¬ë¡€ ì²˜ë¦¬
 	if (y >= n || x >= n) return 0;
 	if (y == n - 1 && x == n - 1) return 1;
 	
-	// ¸Ş¸ğÀÌÁ¦ÀÌ¼Ç
+	// ë©”ëª¨ì´ì œì´ì…˜
 	int& ret = cache[y][x];
 	if (ret != -1) return ret;
 	
